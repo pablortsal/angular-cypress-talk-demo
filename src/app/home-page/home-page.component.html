@@ -1,0 +1,21 @@
+<div class="form-container">
+  <form *ngIf="signUpForm" [formGroup]="signUpForm">
+    <h1>Registro de usuario</h1>
+    <input cy-input-name formControlName="name" type="text" placeholder="Nombre">
+    <p style="color:red"
+      *ngIf="signUpForm.get('name').invalid && signUpForm.get('name').dirty && signUpForm.get('name').touched"> El
+      nombre debe tener al
+      menos 4 caracteres</p>
+    <input cy-input-email formControlName="email" type="email" placeholder="Email">
+    <p style="color:red"
+      *ngIf="signUpForm.get('email').invalid && signUpForm.get('email').dirty && signUpForm.get('email').touched"> Email
+      no válido</p>
+    <input cy-input-password formControlName="password" type="password" placeholder="Contraseña">
+    <p style="color:red"
+      *ngIf="signUpForm.get('password').invalid && signUpForm.get('password').dirty && signUpForm.get('password').touched">
+      La contraseña
+      debe tener al menos 6 caracteres</p>
+    <button [disabled]="signUpForm.invalid" (click)="sendForm()">Registrar</button>
+    <p cy-signup-error style="color:red" *ngIf="error"> Error al registrarse</p>
+  </form>
+</div>
